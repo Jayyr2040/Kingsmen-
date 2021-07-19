@@ -21,6 +21,7 @@ app.use(session({
   saveUninitialized: false
 }));
 
+
 // CONTROLLERS
 // fitting room three
 const roomController = require('./controllers/room.js');
@@ -29,16 +30,13 @@ const usersController = require('./controllers/users.js');
 app.use('/users', usersController);
 const sessionController = require('./controllers/sessions.js');
 app.use('/sessions', sessionController);
-//app.use(function (req, res, next) {
-//  req.session.loggedin = false;
-//  res.locals.session = req.session;
-//  next();
-//});
+
 
 // GET INDEX
 app.get('/', (req, res) => {
-  const isAuthenticated = req.session.currentUser;
-  res.render('index.ejs', {isAuthenticated});
+ const isAuthenticated = req.session.currentUser;
+ res.render('index.ejs', {isAuthenticated});
+
 });
 
 

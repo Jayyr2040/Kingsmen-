@@ -4,18 +4,25 @@ const router = express.Router();
 const User = require('../models/users.js');
 
 // ROUTES
-// get index
-router.get('/', (req, res) => {
+
+const isAuthenticated = (req, res, next) => {
   if (req.session.currentUser) {
-  // finds all users
+    return next();
+  } else {
+    res.redirect("/");
+  }
+};
+// get index
+router.get('/', isAuthenticated, (req, res) => {
+ 
   User.find({}, (err, foundUsers) => {
     // renders the room page
     res.render('room/index.ejs', {
       // passes the found users to the room page
       users: foundUsers
     });
-  });}
-  else { res.redirect("/")};
+  });
+
 });
 
 // post a new message

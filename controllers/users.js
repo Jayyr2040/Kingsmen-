@@ -5,12 +5,19 @@ const User = require('../models/users.js');
 const bcrypt = require("bcrypt");
 
 // ROUTES
-// get new user index
-router.get("/new", (req, res)=> {
-    console.log("current user",req.session.currentUser)
+
+const isAuthenticated = (req, res, next) => {
     if (req.session.currentUser) {
-    res.render("../views/users/new.ejs")}
-    else { res.redirect("/")}
+      return next();
+    } else {
+      res.redirect("/");
+    }
+  };
+// get new user index
+router.get("/new", isAuthenticated, (req, res)=> {
+
+    res.render("../views/users/new.ejs")
+
    });
 
 router.post("/", (req, res) => {
