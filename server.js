@@ -12,6 +12,7 @@ const User = require('./controllers/users');
 // body parser middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(methodOverride("_method"));
 // static files middleware
 app.use(express.static('public'))
 app.use(session({
@@ -28,14 +29,16 @@ const usersController = require('./controllers/users.js');
 app.use('/users', usersController);
 const sessionController = require('./controllers/sessions.js');
 app.use('/sessions', sessionController);
-app.use(function (req, res, next) {
-  res.locals.session = req.session;
-  next();
-});
+//app.use(function (req, res, next) {
+//  req.session.loggedin = false;
+//  res.locals.session = req.session;
+//  next();
+//});
 
 // GET INDEX
 app.get('/', (req, res) => {
-  res.render('index.ejs', {});
+  const isAuthenticated = req.session.currentUser;
+  res.render('index.ejs', {isAuthenticated});
 });
 
 
