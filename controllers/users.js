@@ -10,9 +10,10 @@ router.get("/new", (req, res) => {
    });
 
 router.post("/", (req, res) => {
+    console.log(req.body);
      User.create(req.body, (error,user) => {
          console.log("user",user);
-         res.redirect("/users");
+         res.redirect("/");
      }
      )
    });
