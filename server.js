@@ -53,7 +53,7 @@ app.listen(port, () => {
   console.log('listening on port: ', port);
 });
 
-mongoose.connect('mongodb://localhost:27017/kingsman', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:27017/kingsman', { useNewUrlParser: true,useUnifiedTopology: true, useFindAndModify: false });
 mongoose.connection.once('open', () => {
     console.log('connected to mongo');
 });
