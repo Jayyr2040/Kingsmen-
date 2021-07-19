@@ -20,7 +20,7 @@
       <div class="header-nav">
         <ul>
           <li>
-              <a href="/room">fitting room three</a>
+            <%if (isAuthenticated) { %> <a href="/room">fitting room three</a> <%}%>
           </li>
           <!-- add your link to create a user here -->
           <li><%if (isAuthenticated) { %> <a href="/users/new">Create a New User</a> <%}%> </li>
