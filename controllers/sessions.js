@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/users.js');
+const bcrypt = require("bcrypt");
 
 // ROUTES
 // get new user index
@@ -17,14 +18,17 @@ router.post("/", (req, res) => {
           } else if (!foundUser) {
             // if found user is undefined/null not found etc
             res.send('<a  href="/">Sorry, no user found </a>');
-          } else {
+          } else if (bcrypt.compareSync(req.body.password, foundUser.password)) {
             console.log("log in status b4", req.session.loggedin )
             req.session.currentUser = foundUser;
             req.session.loggedin = true;
-            console.log("log in status after", req.session.loggedin )
+           // console.log("log in status after", req.session.loggedin )
             console.log("log in user", req.session.currentUser);
             res.redirect("/");
-            }
+            } else {
+                // passwords do not match
+                res.send('<a href="/"> password does not match </a>');
+              }
           })
 
    });
