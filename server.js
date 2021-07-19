@@ -6,7 +6,7 @@ const session = require('express-session');
 const methodOverride = require('method-override');
 const bcrypt = require('bcrypt');
 const port = 3000;
-const User = require('./controllers/users');
+//const User = require('./controllers/users');
 
 // MIDDLEWARE
 // body parser middleware
@@ -45,7 +45,7 @@ app.get('/', (req, res) => {
 // SEED ROUTE
 // NOTE: Do NOT run this route until AFTER you have a create user route up and running, as well as encryption working!
 const seed = require('./models/seed.js');
-// const User = require('./models/users.js');
+const User = require('./models/users.js');
 
 app.get('/seedAgents', (req, res) => {
   // encrypts the given seed passwords
