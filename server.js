@@ -6,7 +6,7 @@ const session = require('express-session');
 const methodOverride = require('method-override');
 const bcrypt = require('bcrypt');
 const port = 3000;
-
+const User = require('./controllers/users');
 
 // MIDDLEWARE
 // body parser middleware
@@ -20,6 +20,8 @@ app.use(express.static('public'))
 // fitting room three
 const roomController = require('./controllers/room.js');
 app.use('/room', roomController);
+const usersController = require('./controllers/users.js');
+app.use('/users', usersController);
 
 
 // GET INDEX
