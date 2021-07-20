@@ -1,11 +1,13 @@
 // DEPENDENCIES
+require("dotenv").config();
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const session = require('express-session');
 const methodOverride = require('method-override');
 const bcrypt = require('bcrypt');
-const port = 3000;
+const port = process.env.PORT;
+const MONGODB_URI = process.env.MONGODB_URI;
 //const User = require('./controllers/users');
 
 // MIDDLEWARE
@@ -16,7 +18,7 @@ app.use(methodOverride("_method"));
 // static files middleware
 app.use(express.static('public'))
 app.use(session({
-  secret: "feedmeseymour", //some random string
+  secret: process.env.SECRET, //some random string
   resave: false,
   saveUninitialized: false
 }));
@@ -61,11 +63,11 @@ app.get('/seedAgents', (req, res) => {
 
 
 // CONNECTIONS
-app.listen(port, () => {
+app.listen(port , () => {
   console.log('listening on port: ', port);
 });
 
-mongoose.connect('mongodb://localhost:27017/kingsman', { useNewUrlParser: true,useUnifiedTopology: true, useFindAndModify: false });
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true,useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true });
 mongoose.connection.once('open', () => {
     console.log('connected to mongo');
 });
