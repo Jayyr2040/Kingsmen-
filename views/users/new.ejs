@@ -3,6 +3,7 @@
   <head>
     <title>New User</title>
     <%- include('../partials/head'); %>    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   </head>
   <body>
     <!-- ====== TOP HEADER BAR ====== -->
@@ -22,7 +23,7 @@
       </div>
     </div>
 
-    <div class="user">
+<!--     <div class="user">
       <img src="http://s3.amazonaws.com/gt7sp-prod/livery/76/19/47/4620707518330471976_23.jpg" alt="splash image of kingsman display window"/>
       <br>
     <form action="/users" method="POST">
@@ -32,6 +33,53 @@
       <input type="text" name="password" id="password" />
       <input type="submit" value="Create User" />
     </form>
+
+</div> -->
+<div class="columns">
+  <div class="column">
+  <img src="http://s3.amazonaws.com/gt7sp-prod/livery/76/19/47/4620707518330471976_23.jpg" alt="splash image of kingsman display window"/>
+</div>
+
+<div class="column">
+  <form action="/users" method="POST">
+  <div class="field">
+    <label class="label">Username</label>
+    <div class="control has-icons-left has-icons-right">
+      <input class="input is-warning" type="text" placeholder="Text input" name="name">
+      <span class="icon is-small is-left">
+        <i class="fas fa-user"></i>
+      </span>
+      <span class="icon is-small is-right">
+        <i class="fas fa-check"></i>
+      </span>
+    </div>
+    <p class="help is-success">This username is available</p>
+  </div>
+  
+  <div class="field">
+    <label class="label">Password</label>
+    <div class="control has-icons-left has-icons-right">
+      <input class="input is-warning" type="text" placeholder="Text input" name="password">
+      <span class="icon is-small is-left">
+        <i class="fas fa-envelope"></i>
+      </span>
+      <span class="icon is-small is-right">
+        <i class="fas fa-exclamation-triangle"></i>
+      </span>
+    </div>
+    <p class="help is-success">This email is available</p>
+  </div>
+
+  <div class="field is-grouped">
+    <div class="control">
+      <button class="button is-warning">Submit</button>
+    </div>
+    <div class="control">
+      <button class="button is-warning is-light">Cancel</button>
+    </div>
+  </div>
+</form> 
+</div>
 
 </div>
   </body>
