@@ -117,3 +117,41 @@ body {
   box-sizing: border-box;
   border-radius: 5px;
 }
+
+.user {
+  width: 50%;
+  margin: 50px auto;
+  text-align: center;
+}
+.user > img {
+  border-radius: 20px;
+  opacity: 0.9;
+  width: 100%;
+}
+
+.user textarea {
+  min-width: 100%;
+  max-width: 100%;
+  border: 0px;
+  padding: 15px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-family: 'Montserrat', helvetica;
+}
+.user input[type="submit"] {
+  width: 20%;
+  border: 0px;
+  padding: 10px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background: #444;
+  font-family: 'Montserrat', helvetica;
+  font-weight: 700;
+  color: white;
+  transition: 0.3s ease-in;
+}
+.user input[type="submit"]:hover {
+  cursor: pointer;
+  background: #f6ab32;
+  transition: 0.3s ease-in;
+}
